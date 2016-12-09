@@ -18,14 +18,15 @@ login.get('/login', function(req, res, next) {
 login.post('/login', function(req, res, next) {
     var emailId = req.body.username;
     var password = req.body.password;
+
        connection.query("SELECT * from Customer where emailId = '" + emailId + "' and customerPassword = '" + password + "'", function (err, rows) {
            if (!err) {
                if (rows.length == 0) {
                    res.render('pages/login', {error: "incorrect credentials"});
                } else {
                    console.log('The solution is: ', rows);
-                   req.session.user = emailId;
-                   res.render('pages/home', {data: rows});
+                   req.session.user = {userData : rows};
+                   res.render('pages/home');
                }
            } else {
                console.log(err);
