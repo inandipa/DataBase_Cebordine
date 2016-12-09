@@ -7,6 +7,14 @@ login.get('/', function(req, res, next) {
     res.render('user/index');
     console.log('get');
 });
+
+login.get('/login', function(req, res, next) {
+    console.log('login');
+    res.render('user/services');
+
+});
+
+
 login.post('/login', function(req, res, next) {
     var emailId = req.body.username;
     var password = req.body.password;
