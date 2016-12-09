@@ -33,7 +33,7 @@ login.post('/login', function(req, res, next) {
                } else {
                    console.log('The solution is: ', rows);
                    req.session.user = {userData : rows};
-                   res.render('user/index');
+                   res.render('user/hotel');
                }
            } else {
                console.log(err);
