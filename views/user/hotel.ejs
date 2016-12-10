@@ -56,32 +56,61 @@
 
 	<!-- Modernizr JS -->
 	<script src="javascripts/modernizr-2.6.2.min.js"></script>
-<<<<<<< HEAD
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-=======
-
-
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 
->>>>>>> 1d1bbbf00fb8e35ea3362ea9b9615f82c0819384
+
 	<script src="javascripts/respond.min.js"></script>
 	<![endif]-->
 
-		<script>
-			console.log("mesage");
+        <!-- Javascripts -->
+        <script src="javascripts/jquery-2.1.4.min.js"></script>
+        <!-- Dropdown Menu -->
+        <script src="javascripts/hoverIntent.js"></script>
+        <script src="javascripts/superfish.js"></script>
+        <!-- Bootstrap -->
+        <script src="javascripts/bootstrap.min.js"></script>
+        <!-- Waypoints -->
+        <script src="javascripts/jquery.waypoints.min.js"></script>
+        <!-- Counters -->
+        <script src="javascripts/jquery.countTo.js"></script>
+        <!-- Stellar Parallax -->
+        <script src="javascripts/jquery.stellar.min.js"></script>
+        <!-- Owl Slider -->
+        <!-- // <script src="javascripts/owl.carousel.min.js"></script> -->
+        <!-- Date Picker -->
+        <script src="javascripts/bootstrap-datepicker.min.js"></script>
+        <!-- CS Select -->
+        <script src="javascripts/classie.js"></script>
+        <script src="javascripts/selectFx.js"></script>
+        <!-- Flexslider -->
+        <script src="javascripts/jquery.flexslider-min.js"></script>
+
+        <script src="javascripts/custom.js"></script>
+
+        <script>
+			console.log("script called");
 			var data = <%-data%>;
 			for( var i =0 ; i<data.length ; i++)
 			{
 				console.log(data[i].restName);
 			}
 
+            $( document ).ready(function() {
+                console.log( "ready!" );
+                $(".desc").append("<p>"+data[0].restName+"</p>");
+            });
+
+
+
 		</script>
 
 </head>
 <body>
 <p><%= data%></p>
+<div class = "indra">
+    <h1>hello</h1>
+</div>
 	<div id="fh5co-wrapper">
 	<div id="fh5co-page">
 	<div id="fh5co-header">
@@ -282,37 +311,6 @@
 	</div>
 	<!-- END fh5co-wrapper -->
 	
-	<!-- Javascripts -->
-	<script src="javascripts/jquery-2.1.4.min.js"></script>
-	<!-- Dropdown Menu -->
-	<script src="javascripts/hoverIntent.js"></script>
-	<script src="javascripts/superfish.js"></script>
-	<!-- Bootstrap -->
-	<script src="javascripts/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="javascripts/jquery.waypoints.min.js"></script>
-	<!-- Counters -->
-	<script src="javascripts/jquery.countTo.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="javascripts/jquery.stellar.min.js"></script>
-	<!-- Owl Slider -->
-	<!-- // <script src="javascripts/owl.carousel.min.js"></script> -->
-	<!-- Date Picker -->
-	<script src="javascripts/bootstrap-datepicker.min.js"></script>
-	<!-- CS Select -->
-	<script src="javascripts/classie.js"></script>
-	<script src="javascripts/selectFx.js"></script>
-	<!-- Flexslider -->
-	<script src="javascripts/jquery.flexslider-min.js"></script>
-<<<<<<< HEAD
-
-	<script src="javascripts/custom.js"></script>
-=======
-
-	<script src="javascripts/custom.js"></script>
-
-
->>>>>>> 1d1bbbf00fb8e35ea3362ea9b9615f82c0819384
 
 </body>
 </html>

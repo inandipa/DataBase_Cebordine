@@ -11,28 +11,29 @@ var transporter = nodemailer.createTransport({
 });
 
 Admin.get('/login', function(req, res, next) {
-    res.render('pages/admin_login');
+    res.render('admin/adminLogin');
     console.log('get');
 });
 
 Admin.get('/add', function(req, res, next) {
-    res.render('pages/add_restaurant');
+    res.render('admin/addRestaurant');
 
 });
 
 
 
 Admin.post('/login', function(req, res, next) {
-    var emailId = req.body.username;
-    var password = req.body.password;
+    var emailId = req.body.adminUserName;
+    var password = req.body.adminPassword;
        connection.query("SELECT * from Admin where userName = '" + emailId + "' and adminPassword = '" + password + "'", function (err, rows) {
            if (!err) {
                if (rows.length == 0) {
-                   res.render('pages/admin_Admin', {error: "incorrect credentials"});
+                   res.render('admin/adminLogin', {error: "incorrect credentials"});
                } else {
                    console.log('The solution is: ', rows);
-                   req.session.user = emailId;
-                   res.render('pages/admin_home', {data: rows});
+                   rows = JSON.stringify(rows);
+                   req.session.user = rows;
+                   res.render('admin/adminHome', {data: rows});
                }
            } else {
                console.log(err);
@@ -66,14 +67,14 @@ Admin.post('/add', function(req, res, next) {
                     res.json({yo: 'error'});
                 }else{
                     console.log('Message sent: ' + info.response);
-                    res.json({yo: info.response});
+                    res.render('admin/adminHome');
                 };
             });
 
            // res.render('pages/admin_home', {data: rows});
 
         } else {
-            res.render('pages/add_restaurant', {data: req.body});
+            res.render('admin/addRestaurant', {data: req.body});
             console.log(err);
         }
     });
