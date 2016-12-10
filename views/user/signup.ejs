@@ -52,11 +52,13 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="javascript/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
+	<script src="javascript/respond.min.js"></script>
+
 	<![endif]-->
+		<script src="javascript/checkPassword.js"></script>
 
 </head>
 <body>
@@ -97,33 +99,40 @@
 
 						 <div>
 						 <br><br>
+							 <div class="col-md-12">
+								 <div class="form-group ">
+									 <input type="text" class="form-group col-md-3" id="firstname" placeholder="Firstname" name="firstname">
+									 <input type="text" class="form-group col-md-3" id="middlename" placeholder="Middlename"name="middlename">
+									 <input type="text" class="form-group col-md-3" id="lastname" placeholder="Lastname" name="lastname">
+								 </div>
+							 </div>
 						  <div class="col-md-6 form-group">
-							<input type="text" class="form-control" id="email" placeholder="E-Mail">	
+							<input type="text" class="form-control" id="email" placeholder="E-Mail"name="email">
 							</div>
-						  <div class="col-md-12">
-							<div class="form-group ">
-								<input type="text" class="form-group col-md-3" id="firstname" placeholder="Firstname">
-								<input type="text" class="form-group col-md-3" id="middlename" placeholder="Middlename">
-								<input type="text" class="form-group col-md-3" id="lastname" placeholder="Lastname">
-							</div>
-							</div>
-							
+
 							
 							<div class="col-md-6">
 							<div class="form-group">
-								<input type="password" class="form-control" id="password1" placeholder="Enter Password">
+								<input type="password" class="form-control" id="password1" placeholder="Enter Password"name="password">
 							</div>
 							</div>
 							
 							<div class="col-md-6">
 							<div class="form-group">
-								<input type="password" class="form-control" id="password2" placeholder="Confirm Password">
+								<input type="password" class="form-control" id="password2" placeholder="Confirm Password"name="reenterpassword"onkeyup="checkPasswordMatch();">
 							</div>
 							</div>
+							 <div class="registrationFormAlert" id="divCheckPasswordMatch">
+							 </div>
 							
 							<div class="col-md-6 form-group">
-							<input type="text" class="form-control" id="phone" placeholder="Phone No">	
+							<input type="text" class="form-control" id="phone" placeholder="Phone No"name="phoneno">
 							</div>
+
+							 <div class="col-md-6 form-group">
+								 <input type="text" class="form-control" id="address" placeholder="Address" name="address">
+							 </div>
+
 							<div class="col-md-12">
 							<div class="form-group">
 							<button type="submit" class="btn btn-primary col-md-12" "form-group">Sign-Up</button>
@@ -219,32 +228,32 @@
 	<!-- END fh5co-wrapper -->
 	
 	<!-- Javascripts -->
-	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="javascript/jquery-2.1.4.min.js"></script>
 	<!-- Dropdown Menu -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+	<script src="javascript/hoverIntent.js"></script>
+	<script src="javascript/superfish.js"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="javascript/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="javascript/jquery.waypoints.min.js"></script>
 	<!-- Counters -->
-	<script src="js/jquery.countTo.js"></script>
+	<script src="javascript/jquery.countTo.js"></script>
 	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
+	<script src="javascript/jquery.stellar.min.js"></script>
 	<!-- Owl Slider -->
-	<!-- // <script src="js/owl.carousel.min.js"></script> -->
+	<!-- // <script src="javascript/owl.carousel.min.js"></script> -->
 	<!-- Date Picker -->
-	<script src="js/bootstrap-datepicker.min.js"></script>
+	<script src="javascript/bootstrap-datepicker.min.js"></script>
 	<!-- CS Select -->
-	<script src="js/classie.js"></script>
-	<script src="js/selectFx.js"></script>
+	<script src="javascript/classie.js"></script>
+	<script src="javascript/selectFx.js"></script>
 	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="javascript/jquery.flexslider-min.js"></script>
 	<!-- Google Map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
+	<script src="javascript/google_map.js"></script>
 
-	<script src="js/custom.js"></script>
+	<script src="javascript/custom.js"></script>
 
 </body>
 </html>
