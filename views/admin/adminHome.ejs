@@ -8,9 +8,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Cebordine</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="page signin" />
-	<meta name="keywords" content="SignIn Page" />
-	<meta name="author" content="Team 4" />
 
    	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
@@ -57,7 +54,6 @@
 	<!--[if lt IE 9]>
 	<script src="javascripts/respond.min.js"></script>
 	<![endif]-->
-		<script src="javascripts/passwordCheck.js"></script>
 
 </head>
 <body>
@@ -68,12 +64,13 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.ejs">Cebordine</a></h1>
+					<h1 id="fh5co-logo"><a href="index.ejs">CEBORDINE</a></h1>
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li><a href="index.ejs">Home</a></li>
-							<li><a href="login.ejs">Order Now</a></li>
-							<li><a href="Contact.html">Contact</a></li>
+							
+							<li><a href="/payment">Payment</a></li>
+							<li><a href="/logout">Logout</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -82,67 +79,93 @@
 		
 	</div>
 	<!-- end:fh5co-header -->
-	<div class="fh5co-parallax" style="background-image: url(images/i9.jpg);" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
+	<div id="fh5co-hotel-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
-					<div class="fh5co-intro fh5co-table-cell">
-				
-				<!--		Adding Login Form											-->
-				
-							
-						<form action="/login" method="post">
-
-
-						 <div class="row">
-						  <div class="col-md-6">
-						  <div class="col-md-12">
-							<div class="form-group">
-								<input type="text" class="form-control" id="username" placeholder="Username" name="username">
-							</div>
-							</div>
-							<div class="col-md-12">
-							<div class="form-group">
-								<input type="password" class="form-control" id="password" placeholder="Password"name="password">
-							</div>
-							</div>
-
-							<div class="col-md-12">
-							<div class="form-group">
-
-							<button type="submit" class="btn btn-primary col-md-12" "form-group">Login</button>
-
-								<span class="psw">Need an account? <a href="signup.ejs">Sign-up</a></span> <!-- link to sign-up page -->
-							</div>
-							</div>
-						  
-							
-						  </div>
-						  
-						  
-						  </div>
-						</form>
-				
-				
-				<!--		End of Login Form									-->
-				
-				
+				<div class="col-md-4">
+					<div class="hotel-content">
+						<div class="hotel-grid" style="background-image: url(images/r4.jpg);">
+							<div class="price"><span>Spicy Indian Food</span></div>
+							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+						</div>
+						<div class="desc">
+							<h3><a href="#">Aroma</a></h3>
+						</div>
 					</div>
 				</div>
+				<div class="col-md-4">
+					<div class="hotel-content">
+						<div class="hotel-grid" style="background-image: url(images/i8.jpg);">
+							<div class="price"><span>Indian Grilled Food</span></div>
+							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+						</div>
+						<div class="desc">
+							<h3><a href="#">Cholas</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="hotel-content">
+						<div class="hotel-grid" style="background-image: url(images/r3.jpg);">
+							<div class="price"><span>Desserts to savor</span></div>
+							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+						</div>
+						<div class="desc">
+							<h3><a href="#">Rajbhog</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="hotel-content">
+						<div class="hotel-grid" style="background-image: url(images/r5.jpg);">
+							<div class="price"><span>American staple</span></div>
+							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+						</div>
+						<div class="desc">
+							<h3><a href="#">Chick-Fil-A</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="hotel-content">
+						<div class="hotel-grid" style="background-image: url(images/r6.jpg);">
+							<div class="price"><span>Italian Receipes</span></div>
+							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+						</div>
+						<div class="desc">
+							<h3><a href="#">Papa Johns</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="hotel-content">
+						<div class="hotel-grid" style="background-image: url(images/r2.jpg);">
+							<div class="price"><span>Breads</span></div>
+							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+						</div>
+						<div class="desc">
+							<h3><a href="#">Panera Bread</a></h3>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
 
+		<div class="col-md-6">
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary col-md-12" "form-group"><a href="/addRestaurant">ADD</a></button>
 
-
+			</div>
+		</div>
 	<footer id="footer" class="fh5co-bg-color">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
 					<div class="copyright">
 						<p><small>&copy; DB Project Presentation. <br> All Rights Reserved. <br>
-						Designed by Group 4</small></p>
+						Designed by Group 4 </small></p>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -180,6 +203,7 @@
 		</div>
 	</footer>
 
+
 	</div>
 	<!-- END fh5co-page -->
 
@@ -197,7 +221,6 @@
 	<script src="javascripts/jquery.waypoints.min.js"></script>
 	<!-- Counters -->
 	<script src="javascripts/jquery.countTo.js"></script>
-	<!-- Stellar Parallax -->
 	<!-- Stellar Parallax -->
 	<script src="javascripts/jquery.stellar.min.js"></script>
 	<!-- Owl Slider -->
