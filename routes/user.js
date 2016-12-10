@@ -33,13 +33,84 @@ login.post('/login', function(req, res, next) {
                } else {
                    console.log('The solution is: ', rows);
                    req.session.user = {userData : rows};
-                   res.render('user/hotel');
+                   res.redirect("/home");
                }
            } else {
                console.log(err);
            }
        });
 });
+
+login.get('/home', function(req, res, next) {
+
+
+    connection.query("SELECT * from Restaurant", function (err, rows) {
+        if (!err) {
+            if (rows.length == 0) {
+                res.render('user/login', {error: "no data"});
+            } else {
+                console.log('The solution is: ', rows);
+                req.session.user = {userData : rows};
+                rows = JSON.stringify(rows);
+                console.log(rows);
+                res.render("user/hotel",{data : rows});
+            }
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+
+login.get('/menu', function(req, res, next) {
+
+
+    connection.query("SELECT * from Restaurant", function (err, rows) {
+        if (!err) {
+            if (rows.length == 0) {
+                res.render('user/login', {error: "no data"});
+            } else {
+                var restID = req.query.hotel;
+                console.log(rows[0].restId);
+                connection.query("SELECT * from Menu where restId = '" +  restID +  "'", function (err, rows) {
+                    if (!err) {
+                        if (rows.length == 0) {
+                            res.redirect("/home");
+                        } else {
+                            var apppetizer,main_Course,Desserts;
+                            console.log('The solution is: ', rows);
+                            console.log(rows[0].menuId);
+                            connection.query("SELECT * from apppetizer where menuId = '" +  rows[0].menuId +  "'", function (err, rows) {
+                                apppetizer = rows;
+                                console.log('The solution is: ', rows);
+                                connection.query("SELECT * from Desserts where menuId = '" +  rows[0].menuId +  "'", function (err, rows) {
+                                    Desserts = rows;
+                                    console.log('The solution is: ', rows);
+                                    connection.query("SELECT * from Desserts where menuId = '" +  rows[0].menuId +  "'", function (err, rows) {
+                                        main_Course = rows;
+                                        console.log('The solution is: ', rows);
+                                        res.render('user/menu', {data : {apppetizer:apppetizer,main_Course:main_Course,Desserts:Desserts}});
+                                    });
+                                });
+
+                            });
+
+
+                        }
+                    } else {
+                        console.log(err);
+                        res.redirect("/home");
+                    }
+                });
+
+
+            }
+        } else {
+            console.log(err);
+        }
+    });
+});
+
 
 
 login.post('/signup', function(req, res, next) {
