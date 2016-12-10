@@ -20,8 +20,11 @@
 	<meta property="og:description" content=""/>
 	<meta name="twitter:title" content="" />
 	<meta name="twitter:image" content="" />
+
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
+
+
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
@@ -53,13 +56,32 @@
 
 	<!-- Modernizr JS -->
 	<script src="javascripts/modernizr-2.6.2.min.js"></script>
+<<<<<<< HEAD
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
+=======
+
+
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+
+>>>>>>> 1d1bbbf00fb8e35ea3362ea9b9615f82c0819384
 	<script src="javascripts/respond.min.js"></script>
 	<![endif]-->
 
+		<script>
+			console.log("mesage");
+			var data = <%-data%>;
+			for( var i =0 ; i<data.length ; i++)
+			{
+				console.log(data[i].restName);
+			}
+
+		</script>
+
 </head>
 <body>
+<p><%= data%></p>
 	<div id="fh5co-wrapper">
 	<div id="fh5co-page">
 	<div id="fh5co-header">
@@ -282,8 +304,15 @@
 	<script src="javascripts/selectFx.js"></script>
 	<!-- Flexslider -->
 	<script src="javascripts/jquery.flexslider-min.js"></script>
+<<<<<<< HEAD
 
 	<script src="javascripts/custom.js"></script>
+=======
+
+	<script src="javascripts/custom.js"></script>
+
+
+>>>>>>> 1d1bbbf00fb8e35ea3362ea9b9615f82c0819384
 
 </body>
 </html>
