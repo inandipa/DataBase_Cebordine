@@ -64,6 +64,7 @@ login.get('/home', function(req, res, next) {
 
 login.get('/menu', function(req, res, next) {
 
+    console.log(req.query.hotel);
 
     connection.query("SELECT * from Restaurant", function (err, rows) {
         if (!err) {
@@ -80,15 +81,19 @@ login.get('/menu', function(req, res, next) {
                             var apppetizer,main_Course,Desserts;
                             console.log('The solution is: ', rows);
                             console.log(rows[0].menuId);
-                            connection.query("SELECT * from apppetizer where menuId = '" +  rows[0].menuId +  "'", function (err, rows) {
-                                apppetizer = rows;
+                            var menuID = rows[0].menuId;
+
+                            connection.query("SELECT * from apppetizer where menuId = '" +  menuID +  "'", function (err, rows) {
+                                apppetizer = JSON.stringify(rows);
                                 console.log('The solution is: ', rows);
-                                connection.query("SELECT * from Desserts where menuId = '" +  rows[0].menuId +  "'", function (err, rows) {
-                                    Desserts = rows;
+
+                                connection.query("SELECT * from Desserts where menuId = '" +  menuID +  "'", function (err, rows) {
+                                    Desserts = JSON.stringify(rows);
                                     console.log('The solution is: ', rows);
-                                    connection.query("SELECT * from Desserts where menuId = '" +  rows[0].menuId +  "'", function (err, rows) {
-                                        main_Course = rows;
+                                    connection.query("SELECT * from Desserts where menuId = '" +  menuID +  "'", function (err, rows) {
+                                        main_Course = JSON.stringify(rows);
                                         console.log('The solution is: ', rows);
+                                       // res.json( {data : {apppetizer:apppetizer,main_Course:main_Course,Desserts:Desserts}});
                                         res.render('user/menu', {data : {apppetizer:apppetizer,main_Course:main_Course,Desserts:Desserts}});
                                     });
                                 });

@@ -63,54 +63,50 @@
 	<script src="javascripts/respond.min.js"></script>
 	<![endif]-->
 
-        <!-- Javascripts -->
-        <script src="javascripts/jquery-2.1.4.min.js"></script>
-        <!-- Dropdown Menu -->
-        <script src="javascripts/hoverIntent.js"></script>
-        <script src="javascripts/superfish.js"></script>
-        <!-- Bootstrap -->
-        <script src="javascripts/bootstrap.min.js"></script>
-        <!-- Waypoints -->
-        <script src="javascripts/jquery.waypoints.min.js"></script>
-        <!-- Counters -->
-        <script src="javascripts/jquery.countTo.js"></script>
-        <!-- Stellar Parallax -->
-        <script src="javascripts/jquery.stellar.min.js"></script>
-        <!-- Owl Slider -->
-        <!-- // <script src="javascripts/owl.carousel.min.js"></script> -->
-        <!-- Date Picker -->
-        <script src="javascripts/bootstrap-datepicker.min.js"></script>
-        <!-- CS Select -->
-        <script src="javascripts/classie.js"></script>
-        <script src="javascripts/selectFx.js"></script>
-        <!-- Flexslider -->
-        <script src="javascripts/jquery.flexslider-min.js"></script>
+	<!-- Javascripts -->
+	<script src="javascripts/jquery-2.1.4.min.js"></script>
+	<!-- Dropdown Menu -->
+	<script src="javascripts/hoverIntent.js"></script>
+	<script src="javascripts/superfish.js"></script>
+	<!-- Bootstrap -->
+	<script src="javascripts/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="javascripts/jquery.waypoints.min.js"></script>
+	<!-- Counters -->
+	<script src="javascripts/jquery.countTo.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="javascripts/jquery.stellar.min.js"></script>
+	<!-- Owl Slider -->
+	<!-- // <script src="javascripts/owl.carousel.min.js"></script> -->
+	<!-- Date Picker -->
+	<script src="javascripts/bootstrap-datepicker.min.js"></script>
+	<!-- CS Select -->
+	<script src="javascripts/classie.js"></script>
+	<script src="javascripts/selectFx.js"></script>
+	<!-- Flexslider -->
+	<script src="javascripts/jquery.flexslider-min.js"></script>
 
-        <script src="javascripts/custom.js"></script>
+	<script src="javascripts/custom.js"></script>
 
+			
+			
         <script>
 			console.log("script called");
 			var data = <%-data%>;
-			for( var i =0 ; i<data.length ; i++)
-			{
-				console.log(data[i].restName);
-			}
 
-            $( document ).ready(function() {
+		 $( document ).ready(function() {
                 console.log( "ready!" );
-                $(".desc").append("<p>"+data[0].restName+"</p>");
-            });
-
-
-
+			for(var i=0;i<data.length;i++)
+				{
+                $(".indra").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image: url(images/r4.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	<a class="book-now text-center" href="/menu?hotel='+data[i].restId+'"><i class="ti-calendar"></i> Order Now</a> 	</div> 	<p>'+data[i].restName+'</p>	</div>	</div>');
+           
+			}
+ });
 		</script>
 
 </head>
 <body>
-<p><%= data%></p>
-<div class = "indra">
-    <h1>hello</h1>
-</div>
+
 	<div id="fh5co-wrapper">
 	<div id="fh5co-page">
 	<div id="fh5co-header">
@@ -118,7 +114,7 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.ejs">CEBORDINE</a></h1>
+					<h1 id="fh5co-logo"><a href="/">CEBORDINE</a></h1>
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li><a href="index.ejs">Home</a></li>
@@ -134,7 +130,7 @@
 		
 	</div>
 	<!-- end:fh5co-header -->
-	<div class="fh5co-parallax" style="background-image: url(images/i2.jpg);" data-stellar-background-ratio="0.5">
+	<div class="fh5co-parallax" style="background-image: url(/images/i2.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
@@ -149,14 +145,22 @@
 
 						<div style="width: 450px;" class="a-col">
 							<section>
-								<select class="cs-select cs-skin-border">
-									<option value="" disabled selected>Select Restaurant</option>
-									<option >AROMA</option>
-									<option >CHOLAS</option>
-									<option >CHICK-FIL-A</option>
-									<option >PAPA JOHNS</option>
-									<option >PANERA BREAD</option>
-									<option >RAJBHOG</option>
+								<select id ="sel" class="cs-select cs-skin-border">
+								<option selected disabled>Select Restuarant</option>
+								<script>
+			console.log("drop down");
+			var select = document.getElementById("sel");
+			var data = <%-data%>;
+			for(var i =0; i<data.length;i++){
+			var opt = data[i].restName;
+			var e1 = document.createElement("option");
+			e1.textContent=opt;
+			e1.value = opt;
+			select.appendChild(e1);
+			}		
+
+		</script>
+									
 								</select>
 							</section>
 						</div>
@@ -188,14 +192,18 @@
 	<div id="fh5co-hotel-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
+			
+			<div class = "indra">
+			
+			</div>
+		
+				<!--<div class="col-md-4">
 					<div class="hotel-content">
 						<div class="hotel-grid" style="background-image: url(images/r4.jpg);">
 							<div class="price"><span>Spicy Indian Food</span></div>
 							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
 						</div>
 						<div class="desc">
-							<h3><a href="#">Aroma</a></h3>
 						</div>
 					</div>
 				</div>
@@ -205,8 +213,7 @@
 							<div class="price"><span>Indian Grilled Food</span></div>
 							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
 						</div>
-						<div class="desc">
-							<h3><a href="#">Cholas</a></h3>
+						<div class="desc" id="">
 						</div>
 					</div>
 				</div>
@@ -255,7 +262,7 @@
 					</div>
 				</div>
 
-			</div>
+			</div>-->
 		</div>
 	</div>
 	
@@ -310,7 +317,7 @@
 
 	</div>
 	<!-- END fh5co-wrapper -->
-	
+
 
 </body>
 </html>

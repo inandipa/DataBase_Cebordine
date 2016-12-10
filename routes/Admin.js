@@ -45,7 +45,7 @@ Admin.post('/add', function(req, res, next) {
 
     console.log(req.body.id+"."+req.body.rating+"."+req.body.name+"."+req.body.location+"."+req.session.user+".");
     // INSERT into Restaurant values ('spa13',4.2,'Flying Spagetti','Concord','cebordine');
-    connection.query("INSERT into Restaurant values ('" + req.body.id + "',"+  req.body.rating +  ",'"+  req.body.name +  "','"+  req.body.location + "','"+  req.session.user + "','" +  req.body.email + "','"+  req.body.password +"');", function (err, rows) {
+    connection.query("INSERT into Restaurant values ('" + req.body.restID + "',"+  '6' +  ",'"+  req.body.restName +  "','"+  req.body.address + "','"+  req.session.user + "','" +  req.body.restEmail + "','"+  req.body.password +"');", function (err, rows) {
         if (!err) {
 
             var mailOptions = {
