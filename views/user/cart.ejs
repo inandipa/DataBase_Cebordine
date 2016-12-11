@@ -92,44 +92,30 @@
 
     <script>
         console.log("script called");
-        var apetizer = <%-data.apppetizer%>;
-        var main_course = <%-data.main_Course%>;
-        var Desserts = <%-data.Desserts%>;
+        var data = <%-data%>;
 
         $( document ).ready(function() {
             console.log( "ready!" );
-            for(var i=0;i<apetizer.length;i++)
-            {   console.log(apetizer[i].aName);
+            var total = parseFloat(0);
+            for(var i=0;i<data.length;i++)
+            {
+                total = total + parseFloat(data[i].price);
                 if(i ==0){
-                    $(".appetizer").append("<h3>APPETIZER</h3>");
+                    $(".indra").append("<h3>CART</h3>");
+                    $(".indra").append('<div class="col-md-12">	<div class="hotel-content"> 	</div> 	<span> Item category price  </span>	</div>');
+
                 }
-                $(".appetizer").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image: url(/images/s'+Math.floor((Math.random() * 9) + 1)+'.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	<a class="book-now text-center" href="/AddtoCart?id='+apetizer[i].menuId+'&name='+apetizer[i].aName+'&price='+apetizer[i].aPrice+'&category=apppetizer"><i class="ti-calendar"></i> Order Now</a> 	</div> 	<p>'+apetizer[i].aName+'</p><p> Price : $'+apetizer[i].aPrice+'</p>	</div>	</div>');
+                $(".indra").append('<div class="col-md-12">	<div class="hotel-content"> 	</div> 	<span>'+data[i].name+'      '+data[i].category+'      '+data[i].price+'  </span>	</div>');
 
             }
-            for(var i=0;i<main_course.length;i++)
-            {   console.log(main_course[i].main_course_Name);
-                if(i ==0){
-                    $(".main").append("<h3>MAIN COURSE</h3>");
-                }
-
-                $(".main").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image: url(/images/m'+Math.floor((Math.random() * 13) + 1)+'.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	<a class="book-now text-center" href="/AddtoCart?id='+main_course[i].menuId+'&name='+main_course[i].main_course_Name+'&price='+main_course[i].Price+'&category=main_Course"><i class="ti-calendar"></i> Order Now</a> 	</div> 	<p>'+main_course[i].main_course_Name+'</p>	 	<p> Price : $'+main_course[i].Price+'</p>	</div>	</div>');
-
-            }
-            for(var i=0;i<Desserts.length;i++)
-            {   console.log(Desserts[i].dName);
-                if(i ==0){
-                    $(".deserts").append("<h3>DESSERTS</h3>");
-                }
-
-                $(".deserts").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image: url(/images/d'+Math.floor((Math.random() * 12) + 1)+'.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	<a class="book-now text-center" href="/AddtoCart?id='+Desserts[i].menuId+'&name='+Desserts[i].dName+'&price='+Desserts[i].dPrice+'&category=Desserts"><i class="ti-calendar"></i> Order Now</a> 	</div> 	<p>'+Desserts[i].dName+'</p>	<p> Price : $'+Desserts[i].dPrice+'</p>	</div>	</div>');
-
-            }
+            $(".indra").append("<h3>Total</h3><span>"+ total +"</span>");
 
         });
     </script>
 
 </head>
 <body>
+<%=data%>
 <div id="fh5co-wrapper">
     <div id="fh5co-page">
         <div id="fh5co-header">
@@ -140,7 +126,7 @@
                         <h1 id="fh5co-logo"><a href="/">CEBORDINE</a></h1>
                         <nav id="fh5co-menu-wrap" role="navigation">
                             <ul class="sf-menu" id="fh5co-primary-menu">
-                                <li><a href="/">Home</a></li>
+                                <li><a href="index.ejs">Home</a></li>
 
                                 <li><a href="/cart">Cart</a></li>
                                 <li><a href="/contact">Contact</a></li>
@@ -216,34 +202,85 @@
             <div class="container">
                 <div class="row">
 
-                    <div class = "appetizer">
+                    <div class = "indra">
 
                     </div>
+                    <div class="col-md-12">
+                        <form action="/placeorder">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary col-md-12" >order</button>
+                        </div>
+                        </form>
+                    </div>
 
+                    <!--<div class="col-md-4">
+                        <div class="hotel-content">
+                            <div class="hotel-grid" style="background-image: url(images/r4.jpg);">
+                                <div class="price"><span>Spicy Indian Food</span></div>
+                                <a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+                            </div>
+                            <div class="desc">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="hotel-content">
+                            <div class="hotel-grid" style="background-image: url(images/i8.jpg);">
+                                <div class="price"><span>Indian Grilled Food</span></div>
+                                <a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+                            </div>
+                            <div class="desc" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="hotel-content">
+                            <div class="hotel-grid" style="background-image: url(images/r3.jpg);">
+                                <div class="price"><span>Desserts to savor</span></div>
+                                <a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+                            </div>
+                            <div class="desc">
+                                <h3><a href="#">Rajbhog</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="hotel-content">
+                            <div class="hotel-grid" style="background-image: url(images/r5.jpg);">
+                                <div class="price"><span>American staple</span></div>
+                                <a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+                            </div>
+                            <div class="desc">
+                                <h3><a href="#">Chick-Fil-A</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="hotel-content">
+                            <div class="hotel-grid" style="background-image: url(images/r6.jpg);">
+                                <div class="price"><span>Italian Receipes</span></div>
+                                <a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+                            </div>
+                            <div class="desc">
+                                <h3><a href="#">Papa Johns</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="hotel-content">
+                            <div class="hotel-grid" style="background-image: url(images/r2.jpg);">
+                                <div class="price"><span>Breads</span></div>
+                                <a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
+                            </div>
+                            <div class="desc">
+                                <h3><a href="#">Panera Bread</a></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>-->
                 </div>
             </div>
-
-            <div id="fh5co-hotel-section">
-                <div class="container">
-                    <div class="row">
-
-                        <div class = "main">
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="fh5co-hotel-section">
-                    <div class="container">
-                        <div class="row">
-
-                            <div class = "deserts">
-
-                            </div>
-
-                        </div>
-                    </div>
 
 
             <footer id="footer" class="fh5co-bg-color">

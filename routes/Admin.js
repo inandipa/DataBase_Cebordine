@@ -20,6 +20,14 @@ Admin.get('/add', function(req, res, next) {
 
 });
 
+Admin.get('/home', function(req, res, next) {
+    if(req.session.user == null){
+        res.render('admin/adminLogin');
+    }else {
+        res.render('admin/adminHome');
+    }
+});
+
 
 
 Admin.post('/login', function(req, res, next) {
@@ -32,7 +40,7 @@ Admin.post('/login', function(req, res, next) {
                } else {
                    console.log('The solution is: ', rows);
                    rows = JSON.stringify(rows);
-                   req.session.user = rows;
+                   req.session.user = emailId;
                    res.render('admin/adminHome', {data: rows});
                }
            } else {
@@ -45,31 +53,42 @@ Admin.post('/add', function(req, res, next) {
 
     console.log(req.body.id+"."+req.body.rating+"."+req.body.name+"."+req.body.location+"."+req.session.user+".");
     // INSERT into Restaurant values ('spa13',4.2,'Flying Spagetti','Concord','cebordine');
-    connection.query("INSERT into Restaurant values ('" + req.body.restID + "',"+  '6' +  ",'"+  req.body.restName +  "','"+  req.body.address + "','"+  req.session.user + "','" +  req.body.restEmail + "','"+  req.body.password +"');", function (err, rows) {
+    connection.query("INSERT into Restaurant (rating,restName,location,userName,rest_email,password) values (6,'"+  req.body.restName +  "','"+  req.body.address + "','"+  req.session.user + "','" +  req.body.restEmail + "','"+  req.body.password +"');", function (err, rows) {
         if (!err) {
+            connection.query("select * from Restaurant where rest_email ='"+  req.body.restEmail +  "'", function (err, rows) {
 
-            var mailOptions = {
-                from: 'indrakiran12896@gmail.com', // sender address
-                to: req.body.email, // list of receivers
-                subject: 'Registration to Cebordine', // Subject line
+                connection.query("INSERT into Menu (restId) values (" + rows[0].restId + ");", function (err, rows) {
+                    if (!err) {
+                        var mailOptions = {
+                            from: 'indrakiran12896@gmail.com', // sender address
+                            to: req.body.restEmail, // list of receivers
+                            subject: 'Registration to Cebordine', // Subject line
 
-                generateTextFromHTML: true,
-                html: '<b>Welcome to Cebordine!!!   enter menu and also can update Restaurant Details  </b><br />'
-                + 'password :'+req.body.password+ '<br />'
-                + '<a href=\"http://localhost:3000/restaurant/login \">Click here to Login into your account.</a>'
-                + '<br />'
+                            generateTextFromHTML: true,
+                            html: '<b>Welcome to Cebordine!!!   enter menu and  update Restaurant Details  </b><br />'
+                            + 'password :' + req.body.password + '<br />'
+                            + '<a href=\"http://localhost:3000/restaurant/login \">Click here to Login into your account.</a>'
+                            + '<br />'
 
-            };
+                        };
 
-            transporter.sendMail(mailOptions, function(error, info){
-                if(error){
-                    console.log(error);
-                    res.json({yo: 'error'});
-                }else{
-                    console.log('Message sent: ' + info.response);
-                    res.render('admin/adminHome');
-                };
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                                res.json({yo: 'error'});
+                            } else {
+                                console.log('Message sent: ' + info.response);
+                                res.render('admin/adminHome');
+                            }
+                            ;
+                        });
+                    } else {
+                        res.render('admin/addRestaurant', {data: req.body});
+                        console.log(err);
+                    }
+                });
             });
+
 
            // res.render('pages/admin_home', {data: rows});
 

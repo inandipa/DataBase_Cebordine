@@ -24,39 +24,40 @@
 	<meta name="twitter:card" content="" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 	<!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,900,700,900italic' rel='stylesheet' type='text/css'> -->
 
 	<!-- Stylesheets -->
 	<!-- Dropdown Menu -->
-	<link rel="stylesheet" href="stylesheets/superfish.css">
+	<link rel="stylesheet" href="/stylesheets/superfish.css">
 	<!-- Owl Slider -->
 	<!-- <link rel="stylesheet" href="stylesheets/owl.carousel.css"> -->
 	<!-- <link rel="stylesheet" href="stylesheets/owl.theme.default.min.css"> -->
 	<!-- Date Picker -->
-	<link rel="stylesheet" href="stylesheets/bootstrap-datepicker.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-datepicker.min.css">
 	<!-- CS Select -->
-	<link rel="stylesheet" href="stylesheets/cs-select.css">
-	<link rel="stylesheet" href="stylesheets/cs-skin-border.css">
+	<link rel="stylesheet" href="/stylesheets/cs-select.css">
+	<link rel="stylesheet" href="/stylesheets/cs-skin-border.css">
 
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="stylesheets/themify-icons.css">
+	<link rel="stylesheet" href="/stylesheets/themify-icons.css">
 	<!-- Flat Icon -->
-	<link rel="stylesheet" href="stylesheets/flaticon.css">
+	<link rel="stylesheet" href="/stylesheets/flaticon.css">
 	<!-- Icomoon -->
-	<link rel="stylesheet" href="stylesheets/icomoon.css">
+	<link rel="stylesheet" href="/stylesheets/icomoon.css">
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="stylesheets/flexslider.css">
+	<link rel="stylesheet" href="/stylesheets/flexslider.css">
 
 	<!-- Style -->
-	<link rel="stylesheet" href="stylesheets/style.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="javascript/modernizr-2.6.2.min.js"></script>
+	<script src="/javascripts/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="javascript/respond.min.js"></script>
+	<script src="/javascripts/respond.min.js"></script>
 	<![endif]-->
+	<script src="/javascripts/passwordCheck.js"></script>
 
 </head>
 <body>
@@ -67,11 +68,11 @@
 				<div class="container">
 					<div class="nav-header">
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-						<h1 id="fh5co-logo"><a href="../user/index.ejs">Cebordine</a></h1>
+						<h1 id="fh5co-logo"><a href="/restaurant/login">Cebordine</a></h1>
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li><a href="/index">Home</a></li>
-								<li><a href="/contact">Contact</a></li>
+								<li><a href="/restaurant/login">Home</a></li>
+								<li><a href="Contact.html">Contact</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -80,7 +81,7 @@
 
 		</div>
 		<!-- end:fh5co-header -->
-		<div class="fh5co-parallax" style="background-image: url(images/i9.jpg);" data-stellar-background-ratio="0.5">
+		<div class="fh5co-parallax" style="background-image: url(/images/i9.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">
@@ -90,25 +91,28 @@
 							<!--		Adding Login Form											-->
 
 
-							<form action="/adminHome" method="post">
+							<form action="/restaurant/login" method="post">
 
 
 								<div class="row">
 									<div class="col-md-6">
 										<div class="col-md-12">
 											<div class="form-group">
-												<input type="text" class="form-control" id="restUserName" placeholder="Username" name="restUserName">
+												<input type="text" class="form-control" id="username" placeholder="Username" name="username">
 											</div>
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<input type="password" class="form-control" id="restPassword" placeholder="Password"name="restUserName">
+												<input type="password" class="form-control" id="password" placeholder="Password"name="password">
 											</div>
 										</div>
 
 										<div class="col-md-12">
 											<div class="form-group">
-												<button type="submit" class="btn btn-primary col-md-12">Login</button>
+
+												<button type="submit" class="btn btn-primary col-md-12" "form-group">Login</button>
+
+												<span class="psw">Need an account? <a href="signup.ejs">Sign-up</a></span> <!-- link to sign-up page -->
 											</div>
 										</div>
 
@@ -182,30 +186,30 @@
 <!-- END fh5co-wrapper -->
 
 <!-- Javascripts -->
-<script src="javascript/jquery-2.1.4.min.js"></script>
+<script src="/javascripts/jquery-2.1.4.min.js"></script>
 <!-- Dropdown Menu -->
-<script src="javascript/hoverIntent.js"></script>
-<script src="javascript/superfish.js"></script>
+<script src="/javascripts/hoverIntent.js"></script>
+<script src="/javascripts/superfish.js"></script>
 <!-- Bootstrap -->
-<script src="javascript/bootstrap.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="javascript/jquery.waypoints.min.js"></script>
+<script src="/javascripts/jquery.waypoints.min.js"></script>
 <!-- Counters -->
-<script src="javascript/jquery.countTo.js"></script>
+<script src="/javascripts/jquery.countTo.js"></script>
 <!-- Stellar Parallax -->
 <!-- Stellar Parallax -->
-<script src="javascript/jquery.stellar.min.js"></script>
+<script src="/javascripts/jquery.stellar.min.js"></script>
 <!-- Owl Slider -->
-<!-- // <script src="javascript/owl.carousel.min.js"></script> -->
+<!-- // <script src="javascripts/owl.carousel.min.js"></script> -->
 <!-- Date Picker -->
-<script src="javascript/bootstrap-datepicker.min.js"></script>
+<script src="/javascripts/bootstrap-datepicker.min.js"></script>
 <!-- CS Select -->
-<script src="javascript/classie.js"></script>
-<script src="javascript/selectFx.js"></script>
+<script src="/javascripts/classie.js"></script>
+<script src="/javascripts/selectFx.js"></script>
 <!-- Flexslider -->
-<script src="javascript/jquery.flexslider-min.js"></script>
+<script src="/javascripts/jquery.flexslider-min.js"></script>
 
-<script src="javascript/custom.js"></script>
+<script src="/javascripts/custom.js"></script>
 
 </body>
 </html>

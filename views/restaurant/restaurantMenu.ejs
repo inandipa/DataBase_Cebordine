@@ -20,43 +20,113 @@
 	<meta property="og:description" content=""/>
 	<meta name="twitter:title" content="" />
 	<meta name="twitter:image" content="" />
+
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
 
+
+`
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,900,700,900italic' rel='stylesheet' type='text/css'> -->
 
 	<!-- Stylesheets -->
 	<!-- Dropdown Menu -->
-	<link rel="stylesheet" href="stylesheets/superfish.css">
+	<link rel="stylesheet" href="/stylesheets/superfish.css">
 	<!-- Owl Slider -->
-	<!-- <link rel="stylesheet" href="stylesheets/owl.carousel.css"> -->
-	<!-- <link rel="stylesheet" href="stylesheets/owl.theme.default.min.css"> -->
+	<!-- <link rel="stylesheet" href="/stylesheets/owl.carousel.css"> -->
+	<!-- <link rel="stylesheet" href="/stylesheets/owl.theme.default.min.css"> -->
 	<!-- Date Picker -->
-	<link rel="stylesheet" href="stylesheets/bootstrap-datepicker.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-datepicker.min.css">
 	<!-- CS Select -->
-	<link rel="stylesheet" href="stylesheets/cs-select.css">
-	<link rel="stylesheet" href="stylesheets/cs-skin-border.css">
+	<link rel="stylesheet" href="/stylesheets/cs-select.css">
+	<link rel="stylesheet" href="/stylesheets/cs-skin-border.css">
 
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="stylesheets/themify-icons.css">
+	<link rel="stylesheet" href="/stylesheets/themify-icons.css">
 	<!-- Flat Icon -->
-	<link rel="stylesheet" href="stylesheets/flaticon.css">
+	<link rel="stylesheet" href="/stylesheets/flaticon.css">
 	<!-- Icomoon -->
-	<link rel="stylesheet" href="stylesheets/icomoon.css">
+	<link rel="stylesheet" href="/stylesheets/icomoon.css">
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="stylesheets/flexslider.css">
+	<link rel="stylesheet" href="/stylesheets/flexslider.css">
 
 	<!-- Style -->
-	<link rel="stylesheet" href="stylesheets/style.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="javascripts/modernizr-2.6.2.min.js"></script>
+	<script src="/javascripts/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="javascripts/respond.min.js"></script>
+
+
+	<script src="/javascripts/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- Javascripts -->
+	<script src="/javascripts/jquery-2.1.4.min.js"></script>
+	<!-- Dropdown Menu -->
+	<script src="/javascripts/hoverIntent.js"></script>
+	<script src="/javascripts/superfish.js"></script>
+	<!-- Bootstrap -->
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="/javascripts/jquery.waypoints.min.js"></script>
+	<!-- Counters -->
+	<script src="/javascripts/jquery.countTo.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="/javascripts/jquery.stellar.min.js"></script>
+	<!-- Owl Slider -->
+	<!-- // <script src="/javascripts/owl.carousel.min.js"></script> -->
+	<!-- Date Picker -->
+	<script src="/javascripts/bootstrap-datepicker.min.js"></script>
+	<!-- CS Select -->
+	<script src="/javascripts/classie.js"></script>
+	<script src="/javascripts/selectFx.js"></script>
+	<!-- Flexslider -->
+	<script src="/javascripts/jquery.flexslider-min.js"></script>
+
+	<script src="/javascripts/custom.js"></script>
+
+
+
+	<script>
+		console.log("script called");
+		var apetizer = <%-data.apppetizer%>;
+		var main_course = <%-data.main_Course%>;
+		var Desserts = <%-data.Desserts%>;
+
+		$( document ).ready(function() {
+			console.log( "ready!" );
+			for(var i=0;i<apetizer.length;i++)
+			{   console.log(apetizer[i].aName);
+				if(i ==0){
+					$(".appetizer").append("<h3>APPETIZER</h3>");
+				}
+				$(".appetizer").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image:  url(/images/s'+Math.floor((Math.random() * 9) + 1)+'.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	</div> 	<p>'+apetizer[i].aName+'</p><p> Price : $'+apetizer[i].aPrice+'</p>	</div>	</div>');
+
+			}
+			for(var i=0;i<main_course.length;i++)
+			{   console.log(main_course[i].main_course_Name);
+				if(i ==0){
+					$(".main").append("<h3>MAIN COURSE</h3>");
+				}
+
+				$(".main").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image: url(/images/m'+Math.floor((Math.random() * 13) + 1)+'.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	</div> 	<p>'+main_course[i].main_course_Name+'</p>	 	<p> Price : $'+main_course[i].Price+'</p>	</div>	</div>');
+
+			}
+			for(var i=0;i<Desserts.length;i++)
+			{   console.log(Desserts[i].dName);
+				if(i ==0){
+					$(".deserts").append("<h3>DESSERTS</h3>");
+				}
+
+				$(".deserts").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image:  url(/images/d'+Math.floor((Math.random() * 12) + 1)+'.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	 </div> <p>'+Desserts[i].dName+'</p>	<p> Price : $'+Desserts[i].dPrice+'</p>	</div>	</div>');
+
+			}
+
+		});
+	</script>
 
 </head>
 <body>
@@ -67,14 +137,14 @@
 				<div class="container">
 					<div class="nav-header">
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-						<h1 id="fh5co-logo"><a href="index.ejs">CEBORDINE</a></h1>
+						<h1 id="fh5co-logo"><a href="home">CEBORDINE</a></h1>
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li><a href="index.ejs">Home</a></li>
-
-								<li><a href="/cart">Cart</a></li>
+								<li><a href="home">Home</a></li>
+								<li><a href="add">Add Item</a></li>
+								<li><a href="orders">orders</a></li>
 								<li><a href="/contact">Contact</a></li>
-								<li><a href="/logout">Logout</a></li>
+								<li><a href="logout">Logout</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -83,46 +153,18 @@
 
 		</div>
 		<!-- end:fh5co-header -->
-		<div class="fh5co-parallax" style="background-image: url(images/i2.jpg);" data-stellar-background-ratio="0.5">
+		<div class="fh5co-parallax" style="background-image: url(/images/i2.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
 						<div class="fh5co-intro fh5co-table-cell">
-							<h1 class="text-center">Choose food from any restaurant</h1>
+							<h1 class="text-center">YOUR MENU</h1>
 							<div class="wrap">
 								<div class="container">
 									<div class="row">
 										<div id="availability">
-											<form action="#">
 
-												<div style="width: 450px;" class="a-col">
-													<section>
-														<select class="cs-select cs-skin-border">
-															<option value="" disabled selected>Select Restaurant</option>
-															<option >AROMA</option>
-															<option >CHOLAS</option>
-															<option >CHICK-FIL-A</option>
-															<option >PAPA JOHNS</option>
-															<option >PANERA BREAD</option>
-															<option >RAJBHOG</option>
-														</select>
-													</section>
-												</div>
-												<div style="width: 450px;" class="a-col alternate">
-													<div class="input-field">
-														<label>Zip code</label>
-														<input type="text"  />
-													</div>
-												</div>
-
-												<div style="width: 450px;"class="a-col action">
-													<a href="#">
-														<span>&nbsp</span>
-														Search
-													</a>
-												</div>
-											</form>
 										</div>
 									</div>
 								</div>
@@ -137,153 +179,88 @@
 		<div id="fh5co-hotel-section">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
-						<div class="hotel-content">
-							<div class="hotel-grid" style="background-image: url(images/r4.jpg);">
-								<div class="price"><span>Spicy Indian Food</span></div>
-								<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
-							</div>
-							<div class="desc">
-								<h3><a href="#">Aroma</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="hotel-content">
-							<div class="hotel-grid" style="background-image: url(images/i8.jpg);">
-								<div class="price"><span>Indian Grilled Food</span></div>
-								<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
-							</div>
-							<div class="desc">
-								<h3><a href="#">Cholas</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="hotel-content">
-							<div class="hotel-grid" style="background-image: url(images/r3.jpg);">
-								<div class="price"><span>Desserts to savor</span></div>
-								<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
-							</div>
-							<div class="desc">
-								<h3><a href="#">Rajbhog</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="hotel-content">
-							<div class="hotel-grid" style="background-image: url(images/r5.jpg);">
-								<div class="price"><span>American staple</span></div>
-								<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
-							</div>
-							<div class="desc">
-								<h3><a href="#">Chick-Fil-A</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="hotel-content">
-							<div class="hotel-grid" style="background-image: url(images/r6.jpg);">
-								<div class="price"><span>Italian Receipes</span></div>
-								<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
-							</div>
-							<div class="desc">
-								<h3><a href="#">Papa Johns</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="hotel-content">
-							<div class="hotel-grid" style="background-image: url(images/r2.jpg);">
-								<div class="price"><span>Breads</span></div>
-								<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Order Now</a>
-							</div>
-							<div class="desc">
-								<h3><a href="#">Panera Bread</a></h3>
-							</div>
-						</div>
+
+					<div class = "appetizer">
+
 					</div>
 
 				</div>
 			</div>
-		</div>
 
+			<div id="fh5co-hotel-section">
+				<div class="container">
+					<div class="row">
 
-		<footer id="footer" class="fh5co-bg-color">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="copyright">
-							<p><small>&copy; DB Project Presentation. <br> All Rights Reserved. <br>
-									Designed by <a href="http://freehtml5.co" target="_blank">Group 4</a></small></p>
+						<div class = "main">
+
 						</div>
+
 					</div>
-					<div class="col-md-6">
+				</div>
+
+				<div id="fh5co-hotel-section">
+					<div class="container">
 						<div class="row">
-							<div class="col-md-3">
-								<h3>Company</h3>
-								<ul class="link">
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Customer Care</a></li>
-									<li><a href="#">Contact Us</a></li>
-								</ul>
+
+							<div class = "deserts">
+
 							</div>
-							<div class="col-md-6">
-								<h3>Subscribe</h3>
-								<form action="#" id="form-subscribe">
-									<div class="form-field">
-										<input type="email" placeholder="Email Address" id="email">
-										<input type="submit" id="submit" value="Send">
-									</div>
-								</form>
-							</div>
+
 						</div>
 					</div>
-					<div class="col-md-3">
-						<ul class="social-icons">
-							<li>
-								<a href="#"><i class="icon-twitter-with-circle"></i></a>
-								<a href="#"><i class="icon-facebook-with-circle"></i></a>
-								<a href="#"><i class="icon-instagram-with-circle"></i></a>
-								<a href="#"><i class="icon-linkedin-with-circle"></i></a>
-							</li>
-						</ul>
-					</div>
+
+
+					<footer id="footer" class="fh5co-bg-color">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="copyright">
+										<p><small>&copy; DB Project Presentation. <br> All Rights Reserved. <br>
+												Designed by <a href="http://freehtml5.co" target="_blank">Group 4</a></small></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="row">
+										<div class="col-md-3">
+											<h3>Company</h3>
+											<ul class="link">
+												<li><a href="#">About Us</a></li>
+												<li><a href="#">Customer Care</a></li>
+												<li><a href="#">Contact Us</a></li>
+											</ul>
+										</div>
+										<div class="col-md-6">
+											<h3>Subscribe</h3>
+											<form action="#" id="form-subscribe">
+												<div class="form-field">
+													<input type="email" placeholder="Email Address" id="email">
+													<input type="submit" id="submit" value="Send">
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<ul class="social-icons">
+										<li>
+											<a href="#"><i class="icon-twitter-with-circle"></i></a>
+											<a href="#"><i class="icon-facebook-with-circle"></i></a>
+											<a href="#"><i class="icon-instagram-with-circle"></i></a>
+											<a href="#"><i class="icon-linkedin-with-circle"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+
+
 				</div>
+				<!-- END fh5co-page -->
+
 			</div>
-		</footer>
+			<!-- END fh5co-wrapper -->
 
-
-	</div>
-	<!-- END fh5co-page -->
-
-</div>
-<!-- END fh5co-wrapper -->
-
-<!-- Javascripts -->
-<script src="javascripts/jquery-2.1.4.min.js"></script>
-<!-- Dropdown Menu -->
-<script src="javascripts/hoverIntent.js"></script>
-<script src="javascripts/superfish.js"></script>
-<!-- Bootstrap -->
-<script src="javascripts/bootstrap.min.js"></script>
-<!-- Waypoints -->
-<script src="javascripts/jquery.waypoints.min.js"></script>
-<!-- Counters -->
-<script src="javascripts/jquery.countTo.js"></script>
-<!-- Stellar Parallax -->
-<script src="javascripts/jquery.stellar.min.js"></script>
-<!-- Owl Slider -->
-<!-- // <script src="javascripts/owl.carousel.min.js"></script> -->
-<!-- Date Picker -->
-<script src="javascripts/bootstrap-datepicker.min.js"></script>
-<!-- CS Select -->
-<script src="javascripts/classie.js"></script>
-<script src="javascripts/selectFx.js"></script>
-<!-- Flexslider -->
-<script src="javascripts/jquery.flexslider-min.js"></script>
-
-<script src="javascripts/custom.js"></script>
 
 </body>
 </html>

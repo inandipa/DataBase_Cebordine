@@ -19,6 +19,32 @@ login.get('/login', function(req, res, next) {
 
 });
 
+login.get('/logout', function(req, res, next) {
+    console.log('login');
+    res.render('user/login');
+
+});
+
+login.get('/placeorder', function(req, res, next) {
+    cart = req.session.cart;
+    console.log(cart);
+    console.log("INSERT into Orders(emailId,restId,menuId,category) values('" + cart[0].user +"',"+ cart[0].restID+","+ cart[0].menuId +",'" +cart[0].category+"');");
+    for(var i=0 ; i <cart.length ; i++){
+        connection.query("INSERT into Orders(emailId,restId,menuId,category,item) values('" + cart[i].user +"',"+ cart[i].restID+","+ cart[i].menuId +",'" +cart[i].category+"','" +cart[i].name+"');", function (err, rows) {
+            if (!err) {
+                if (rows.length == 0) {
+                    res.render('add', {error: "error while adding data"});
+                }
+            } else {
+                console.log(err);
+            }
+        });
+
+    }
+    res.redirect("/home");
+
+});
+
 
 login.post('/login', function(req, res, next) {
 
@@ -32,7 +58,7 @@ login.post('/login', function(req, res, next) {
                    res.render('user/login', {error: "incorrect credentials"});
                } else {
                    console.log('The solution is: ', rows);
-                   req.session.user = {userData : rows};
+                   req.session.user = emailId;
                    res.redirect("/home");
                }
            } else {
@@ -50,9 +76,8 @@ login.get('/home', function(req, res, next) {
                 res.render('user/login', {error: "no data"});
             } else {
                 console.log('The solution is: ', rows);
-                req.session.user = {userData : rows};
                 rows = JSON.stringify(rows);
-                console.log(rows);
+                //console.log(rows);
                 res.render("user/hotel",{data : rows});
             }
         } else {
@@ -60,6 +85,32 @@ login.get('/home', function(req, res, next) {
         }
     });
 });
+
+login.get('/cart', function(req, res, next) {
+
+    console.log(req.session.cart);
+    res.render('user/cart',{data : JSON.stringify(req.session.cart)})
+});
+
+login.get('/AddTOCart', function(req, res, next) {
+    var cart;
+    console.log(req.session.restID);
+    console.log(req.session.user);
+    console.log(req.query.id);
+
+    if(req.session.cart == null){
+        cart = [];
+    }else{
+        cart = req.session.cart;
+    }
+
+    cart.push({user:req.session.user, restID:req.session.restID , menuId : req.query.id, name : req.query.name, price : req.query.price, category : req.query.category });
+    req.session.cart = cart;
+    console.log(req.session.cart);
+    res.redirect("/home");
+
+});
+
 
 
 login.get('/menu', function(req, res, next) {
@@ -72,6 +123,7 @@ login.get('/menu', function(req, res, next) {
                 res.render('user/login', {error: "no data"});
             } else {
                 var restID = req.query.hotel;
+                req.session.restID = restID;
                 console.log(rows[0].restId);
                 connection.query("SELECT * from Menu where restId = '" +  restID +  "'", function (err, rows) {
                     if (!err) {
@@ -90,7 +142,7 @@ login.get('/menu', function(req, res, next) {
                                 connection.query("SELECT * from Desserts where menuId = '" +  menuID +  "'", function (err, rows) {
                                     Desserts = JSON.stringify(rows);
                                     console.log('The solution is: ', rows);
-                                    connection.query("SELECT * from Desserts where menuId = '" +  menuID +  "'", function (err, rows) {
+                                    connection.query("SELECT * from main_Course where menuId = '" +  menuID +  "'", function (err, rows) {
                                         main_Course = JSON.stringify(rows);
                                         console.log('The solution is: ', rows);
                                        // res.json( {data : {apppetizer:apppetizer,main_Course:main_Course,Desserts:Desserts}});
@@ -129,8 +181,7 @@ login.post('/signup', function(req, res, next) {
                 res.render('user/signup', {error: "incorrect credentials"});
             } else {
                 console.log('The solution is: ', rows);
-                req.session.user = {userData : rows};
-                res.render('user/index');
+                res.render('user/login');
             }
         } else {
             console.log(err);
