@@ -98,7 +98,7 @@
                 console.log( "ready!" );
 			for(var i=0;i<data.length;i++)
 				{
-                $(".indra").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image: url(images/r4.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	<a class="book-now text-center" href="/menu?hotel='+data[i].restId+'"><i class="ti-calendar"></i> Order Now</a> 	</div> 	<p>'+data[i].restName+'</p>	</div>	</div>');
+                $(".indra").append('<div class="col-md-4">	<div class="hotel-content"> <div class="hotel-grid" style="background-image: url(/images/m'+Math.floor((Math.random() * 13) + 1)+'.jpg);"> <div class="price"><span>Spicy Indian Food</span></div>	<a class="book-now text-center" href="/menu?hotel='+data[i].restId+'"><i class="ti-calendar"></i> Order Now</a> 	</div> 	<p>'+data[i].restName+'</p>	</div>	</div>');
            
 			}
  });
@@ -106,7 +106,6 @@
 
 </head>
 <body>
-<%=data%>
 
 	<div id="fh5co-wrapper">
 	<div id="fh5co-page">

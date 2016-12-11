@@ -5,23 +5,31 @@ var connection = require('../model/mysql');
 
 login.get('/', function(req, res, next) {
     res.render('user/index');
-    console.log('get');
+
 });
 
 login.get('/signup', function(req, res, next) {
     res.render('user/signup');
-    console.log('signup');
+
 });
 
 login.get('/login', function(req, res, next) {
-    console.log('login');
+
     res.render('user/login');
 
 });
 
 login.get('/logout', function(req, res, next) {
-    console.log('login');
+
+    req.session.user = null;
+    req.session.cart = null;
     res.render('user/login');
+
+});
+
+login.get('/contact', function(req, res, next) {
+
+    res.render('user/contact');
 
 });
 
@@ -175,7 +183,7 @@ login.post('/signup', function(req, res, next) {
     var password = req.body.password;
     //INSERT into DbProject_Cebordine.Customer values
     //('131','indra@gmail.com','kittansett street d NC','afg','Santosh','Peesu','Reddy');
-    connection.query("INSERT into DbProject_Cebordine.Customer values('" + emailId + "' and customerPassword = '" + password + "'", function (err, rows) {
+    connection.query("INSERT into DbProject_Cebordine.Customer values('" + req.body.email + "','" + req.body.address + "','" + req.body.password + "','" + req.body.firstname + "','" + req.body.lastname + "','" + req.body.middlename + "');", function (err, rows) {
         if (!err) {
             if (rows.length == 0) {
                 res.render('user/signup', {error: "incorrect credentials"});
